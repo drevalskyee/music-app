@@ -1,32 +1,14 @@
 import React from 'react';
-import { FiMenu } from 'react-icons/fi';
-import {
- HeaderBody,
- Logo,
- Nav,
- UserInfo,
- NavList,
- NavListItem,
- UserAvatar,
- MobileIcon,
-} from './Header.styles';
+import HeaderUserAvatar from '../../components/HeaderUserAvatar/HeaderUserAvatar';
+import { Logo } from '../../components/Logo/Logo';
+import { Nav } from '../../components/Nav/Nav';
+import { HeaderBody } from './Header.styles';
 
 const Header = ({ toggleSidebar }) => (
   <HeaderBody>
     <Logo>MusicApp</Logo>
-    <Nav>
-      <MobileIcon onClick={toggleSidebar}>
-        <FiMenu />
-      </MobileIcon>
-      <NavList>
-        <NavListItem>home</NavListItem>
-        <NavListItem>search</NavListItem>
-        <NavListItem>library</NavListItem>
-      </NavList>
-    </Nav>
-    <UserInfo>
-      <UserAvatar />
-    </UserInfo>
+    <Nav toggleSidebar={toggleSidebar} />
+    <HeaderUserAvatar />
   </HeaderBody>
   );
 

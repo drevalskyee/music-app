@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const SidebarBody = styled.aside`
     position: fixed;
@@ -6,22 +7,15 @@ export const SidebarBody = styled.aside`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #000;
+    background: rgb(15,31,101);
+    background: linear-gradient(0deg, rgba(15,31,101,1) 0%, rgba(0,0,0,0.9836135137648809) 41%); 
     color: #fff;
     z-index: 999;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity:  ${({ isOpen }) => (isOpen ? '100%' : '0%')};
-    top: ${({ isOpen }) => (isOpen ? '0%' : '-100%')};
-`;
-
-export const CloseIcon = styled.div`
-    cursor: pointer;
-    font-size: 2rem;
-    position: absolute;
-    top: 15px;
-    right: 20px;
+    opacity:  ${({ isOpenSidebar }) => (isOpenSidebar ? '100%' : '0%')};
+    top: ${({ isOpenSidebar }) => (isOpenSidebar ? '0%' : '-100%')};
 `;
 
 export const SidebarMenu = styled.ul`
@@ -31,15 +25,25 @@ export const SidebarMenu = styled.ul`
     font-size: 3.5rem;
     list-style: none;
     height: 60%;
-
-
+    background: transparent;
 `;
 
 export const SidebarLink = styled.li`
     text-transform: capitalize;
     cursor: pointer;
     color: #8f8d8d;
+    background: transparent;
     &:hover {
         color: #fff;
+    }
+`;
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: #bab7b7;
+     background: transparent;
+
+    &:hover{
+    color: #fff;
     }
 `;

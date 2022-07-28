@@ -1,65 +1,33 @@
 import React from 'react';
+import { MusicPlayer } from '../../components/MusicPlayer/MusicPlayer';
+import { FooterBody } from './Footer.styles';
 
-import {
-FooterBody,
-PlayerContainer,
-CurrentSong,
-VolumeControl,
-PlayerControls,
-CurrentSongImage,
-CurrentTrackInfo,
-CurrentTrackName,
-CurrentTrackArtist,
-TrackControls,
-TrackLenght,
-TrackButtons,
-PrevTrackButton,
-NextTrackButton,
-PlayTrackButton,
-TimeControlStart,
-TimeControlEnd,
-VolumeTrackRangeContainer,
-VolumeTrackButtonContainer,
-VolumeTrackButton,
+const Footer = ({
+currentSong,
+setCurrentSong,
+audioReferense,
+songTimeInfo,
+setSongTimeInfo,
+currentPlaylist,
+setCurrentPlaylist,
+isOpenPlayer,
+setIsOpenPlayer,
 
-} from './Footer.styles';
-
-const Footer = ({ isOpenVolume, toggleVolumeBar }) => (
-  <FooterBody>
-    <PlayerContainer>
-      <CurrentSong>
-        <CurrentSongImage>
-          <img src="" alt="" />
-        </CurrentSongImage>
-        <CurrentTrackInfo>
-          <CurrentTrackName>trackname</CurrentTrackName>
-          <CurrentTrackArtist>artist</CurrentTrackArtist>
-        </CurrentTrackInfo>
-      </CurrentSong>
-      <PlayerControls>
-        <TrackControls>
-          <TrackButtons>
-            <PrevTrackButton />
-            <PlayTrackButton />
-            <NextTrackButton />
-          </TrackButtons>
-        </TrackControls>
-        <TrackLenght>
-          <TimeControlStart>0:00</TimeControlStart>
-          <input type="range" />
-          <TimeControlEnd>2: 30</TimeControlEnd>
-        </TrackLenght>
-      </PlayerControls>
-      <VolumeControl>
-        <VolumeTrackButtonContainer>
-          <VolumeTrackRangeContainer isOpenVolume={isOpenVolume}>
-            <input type="range" />
-          </VolumeTrackRangeContainer>
-          <VolumeTrackButton onClick={toggleVolumeBar} />
-        </VolumeTrackButtonContainer>
-
-      </VolumeControl>
-    </PlayerContainer>
+}) => (
+  <FooterBody isOpenPlayer={isOpenPlayer}>
+    {currentPlaylist === null
+    ? setIsOpenPlayer(false)
+    : setIsOpenPlayer(true) }
+    <MusicPlayer
+      currentSong={currentSong}
+      setCurrentSong={setCurrentSong}
+      audioReferense={audioReferense}
+      songTimeInfo={songTimeInfo}
+      setSongTimeInfo={setSongTimeInfo}
+      currentPlaylist={currentPlaylist}
+      setCurrentPlaylist={setCurrentPlaylist}
+      isOpenPlayer={isOpenPlayer}
+    />
   </FooterBody>
   );
 

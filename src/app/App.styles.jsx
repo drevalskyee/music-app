@@ -10,6 +10,7 @@ export function GlobalStyles() {
     font-family: 'Poppins', sans-serif;
     background: #000;
     max-width: 1920px;
+  
   }
     `;
   }

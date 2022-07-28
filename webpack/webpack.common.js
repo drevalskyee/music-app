@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: [
-        'react-hot-loader/patch',
+        // 'react-hot-loader/patch',
         './src/app/index.jsx',
     ],
     output: {
@@ -19,7 +19,15 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
-                use: 'file-loader',
+                // use: 'file-loader',
+                use: [
+                    {
+                        loader: 'svg-url-loader',
+                        options: {
+                            limit: 10000,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.png$/,

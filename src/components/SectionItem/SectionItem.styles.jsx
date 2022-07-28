@@ -1,27 +1,6 @@
 import styled from '@emotion/styled';
 
-export const MainBody = styled.section`
-
-max-width: 1200px;
-margin: 0 auto;
-min-height: 88vh;
-background:#000;
-`;
-
-export const MusicSection = styled.div`
- display: flex;
- flex-direction: column;
- background: #000;
-
-`;
-
-export const SectionTitle = styled.h2`
- padding-left: 1.5rem;
- margin-top: 1rem;
- color: #fff;
-`;
-
-export const SectionBody = styled.div`
+export const ItemBody = styled.div`
    padding: 1rem;
    height: auto;
    display: grid;
@@ -29,7 +8,8 @@ export const SectionBody = styled.div`
    justify-content: space-between;
    grid-gap: 1rem;
    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-   
+
+
     @media screen and (max-width: 480px) {
         display: flex;
         flex-direction: column;
@@ -38,7 +18,7 @@ export const SectionBody = styled.div`
     }
   `;
 
-export const SectionItem = styled.div`
+export const AudioItem = styled.div`
  width: 190px;
  height: 210px;
  border: 1px solid #606060;
@@ -52,6 +32,7 @@ export const SectionItem = styled.div`
  margin-left: .5rem;
  transition: .3s;
  position: relative;
+ 
 
  & img {
     width:100%;
@@ -59,6 +40,7 @@ export const SectionItem = styled.div`
     border: none;
     background: lightblue;
     border-radius:5px;
+    object-fit: cover;
  }
 
  &img:hover {
@@ -68,6 +50,11 @@ export const SectionItem = styled.div`
  &:hover {
      transition: .2s;
      transform: scale(1.1);
+ }
+
+ &:active {
+    transition: .2s;
+    transform: scale(0.9);
  }
 
 @media screen and (max-width: 480px) {
@@ -81,17 +68,17 @@ export const TrackName = styled.div`
     padding: 0rem .5rem;
     font-size: .8rem;
     font-weight: 800;
-    z-index: 10;        
+    z-index: 10;
 `;
 
 export const ArtistName = styled.div`
     text-transform: capitalize;
     align-self: flex-start;
-    padding: 0rem .5rem;   
+    padding: 0rem .5rem;
     font-size: .8rem;
-    color: #ccc; 
-     z-index: 10;     
-  
+    color: #ccc;
+     z-index: 10;
+
 `;
 
 export const OverlayImage = styled.div`
@@ -104,7 +91,7 @@ color: #0abf0a;
 font-size: 2rem;
 
 &:hover{
-    opacity: .2;
+    opacity: .5;
     transition: .3s;
 }
 

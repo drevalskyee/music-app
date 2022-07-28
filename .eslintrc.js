@@ -27,6 +27,7 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-unused-expressions': 'off',
     'react/prop-types': 'off',
-
+    'no-param-reassign': 'off',
+    'jsx-a11y/media-has-caption': 'off',
   },
 };
