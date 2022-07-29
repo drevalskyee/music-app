@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { MusicPlayer } from '../../components/MusicPlayer/MusicPlayer';
 import { FooterBody } from './Footer.styles';
 
@@ -12,13 +12,24 @@ currentPlaylist,
 setCurrentPlaylist,
 isOpenPlayer,
 setIsOpenPlayer,
+//
+addTrackToLikeList,
+likes,
 
 }) => (
   <FooterBody isOpenPlayer={isOpenPlayer}>
     {currentPlaylist === null
-    ? setIsOpenPlayer(false)
-    : setIsOpenPlayer(true) }
+    ? useEffect(() => {
+    setIsOpenPlayer(false);
+    })
+
+    : useEffect(() => {
+    setIsOpenPlayer(true);
+    }) }
     <MusicPlayer
+      addTrackToLikeList={addTrackToLikeList}
+      likes={likes}
+      //
       currentSong={currentSong}
       setCurrentSong={setCurrentSong}
       audioReferense={audioReferense}

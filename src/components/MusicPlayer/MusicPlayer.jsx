@@ -13,11 +13,17 @@ const MusicPlayer = ({
   currentPlaylist,
   setCurrentPlaylist,
   isOpenPlayer,
+  //
+  addTrackToLikeList,
+likes,
 }) => (
 
   <PlayerContainer>
     <PlayerCurrentTrack currentSong={currentSong} />
     <PlayerControls
+      addTrackToLikeList={addTrackToLikeList}
+      likes={likes}
+    //
       isOpenPlayer={isOpenPlayer}
       currentSong={currentSong}
       setCurrentSong={setCurrentSong}

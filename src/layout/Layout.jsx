@@ -15,11 +15,17 @@ currentPlaylist,
 setCurrentPlaylist,
 isOpenPlayer,
 setIsOpenPlayer,
+//
+addTrackToLikeList,
+likes,
 }) => (
   <>
     <Header />
     {children}
     <Footer
+      addTrackToLikeList={addTrackToLikeList}
+      likes={likes}
+    //
       isOpenPlayer={isOpenPlayer}
       setIsOpenPlayer={setIsOpenPlayer}
       currentSong={currentSong}
@@ -39,4 +45,4 @@ setIsOpenPlayer,
     />
   </>
   );
-export default Layout;
+export { Layout };

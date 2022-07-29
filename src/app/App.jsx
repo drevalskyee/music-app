@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { GlobalStyles } from './App.styles';
-import Layout from '../layout/Layout';
+import { Layout } from '../layout/Layout';
 import { Home } from '../pages/Home';
 import { Search } from '../pages/Search';
 import { Library } from '../pages/Library';
@@ -26,19 +26,27 @@ const App = () => {
     const audioReferense = useRef(null);
 
     // States
+    const [likes, setLikes] = useState([
+      // { key: 'sdfsdf' },
+    ]);
     const isPlaying = useSelector((state) => state.isPlaying.value);
     const [isOpenPlayer, setIsOpenPlayer] = useState(false);
     const [startPageSongs, setStartPageSongs] = useState(GenresIndividualData[0].recommended);
     const [currentPlaylist, setCurrentPlaylist] = useState(null);
     const [genresSearchPageData, setGenresSearchPageData] = useState(Genres);
     const [genresPagesData, setGenresPagesData] = useState(GenresIndividualData);
-    const [currentSong, setCurrentSong] = useState(startPageSongs[0]);
+    // const [currentSong, setCurrentSong] = useState(startPageSongs[0]);
+    const [currentSong, setCurrentSong] = useState([]);
     genresPagesData[0].listen_again;
     // state for audio time
     const [songTimeInfo, setSongTimeInfo] = useState({
     currentTrackTime: 0,
     currentTrackDuration: 0,
   });
+
+  const addTrackToLikeList = (currentTrack) => {
+    setLikes([...likes, currentTrack]);
+  };
 
   const timeUpdateHandler = (e) => {
     const { currentTime } = e.target;
@@ -60,6 +68,9 @@ const App = () => {
     return (
       <BrowserRouter>
         <Layout
+          addTrackToLikeList={addTrackToLikeList}
+          likes={likes}
+        //
           currentSong={currentSong}
           setCurrentSong={setCurrentSong}
           songTimeInfo={songTimeInfo}
@@ -98,7 +109,7 @@ const App = () => {
             <Route
               path="/library"
               element={(
-                <Library />
+                <Library likes={likes} />
 )}
             />
             <Route

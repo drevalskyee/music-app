@@ -1,6 +1,9 @@
 /* eslint-disable jsx-a11y/media-has-caption */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { AiOutlineLike } from 'react-icons/ai';
+import { BiDislike } from 'react-icons/bi';
+import { useState } from 'react';
 import {
 PlayerControlsContainer,
 TrackControls,
@@ -24,9 +27,19 @@ const PlayerControls = ({
   setCurrentSong,
   currentPlaylist,
   isOpenPlayer,
+  //
+  addTrackToLikeList,
 }) => {
   const isPlaying = useSelector((state) => state.isPlaying.value);
   const dispatch = useDispatch();
+
+/// //////////////////////
+const [trackToLikes, setTrackToLikes] = useState({ track: currentSong });
+const addNewTrackToLikes = () => {
+addTrackToLikeList(trackToLikes.track);
+console.log(currentSong);
+};
+/// ///////////////////////
 
   // play & pause audio
   const playMusicHandler = () => {
@@ -74,11 +87,13 @@ const PlayerControls = ({
     <PlayerControlsContainer>
       <TrackControls>
         <TrackButtons>
+          <BiDislike />
           <PrevTrackButton onClick={() => skipTrackHandler('previous')} />
           {isPlaying
           ? <PauseTrackButton onClick={playMusicHandler} />
           : <PlayTrackButton onClick={playMusicHandler} />}
           <NextTrackButton onClick={() => skipTrackHandler('next')} />
+          <AiOutlineLike onClick={() => addNewTrackToLikes()} />
         </TrackButtons>
       </TrackControls>
       <TrackLenght>
